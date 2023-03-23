@@ -8,6 +8,81 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    Rock Paper Scissors!  Best of 3!  Ties replay!
+    <script>
+        let playerWins = 0;
+
+        for(i=0;i<3;){
+            let roundWinner = playRound();
+            alert("Single Game Winner: "+roundWinner.toUpperCase());
+            if(roundWinner == "Player"){
+                playerWins++;
+                i++
+            }
+            else if(roundWinner=="Computer"){
+                i++
+            }
+        }
+
+        alert("Player wins "+playerWins+" out of 3.")
+
+
+
+        function computerSelect(){
+           let randomNumber = Math.random();
+           if(randomNumber < .5){
+                return("rock")
+           }
+           else if(randomNumber < .75){
+                return("scissors")
+           }
+           else{
+                return("paper")
+           }
+        }
+
+        function playRound(){
+            let playerSelection = prompt("Choose Rock Paper or Scissors:").toLowerCase();
+            let computerSelection = computerSelect();
+
+            if(playerSelection=="rock"){
+                if(computerSelection=="rock"){
+                    return("tie");
+                }
+                else if(computerSelection=="paper"){
+                    return("Computer")
+                }
+                else{
+                    return("Player");
+                }
+            }
+            else if(playerSelection=="scissors"){
+                if(computerSelection=="rock"){
+                    return("Computer");
+                }
+                else if(computerSelection=="paper"){
+                    return("Player")
+                }
+                else{
+                    return("tie");
+                }
+            }
+            else if(playerSelection=="paper"){
+                if(computerSelection=="paper"){
+                    return("tie");
+                }
+                else if(computerSelection=="rock"){
+                    return("Player")
+                }
+                else{
+                    return("Computer");
+                }
+            }
+            else{
+                alert("player is an idiot and loses one game");
+                return("Computer")
+            }
+        }
+    </script>
 </body>
 </html>
